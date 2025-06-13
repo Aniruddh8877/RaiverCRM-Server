@@ -33,6 +33,8 @@ namespace Project
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Designation> Designations { get; set; }
         public virtual DbSet<District> Districts { get; set; }
+        public virtual DbSet<LeadAssign> LeadAssigns { get; set; }
+        public virtual DbSet<LeadCategory> LeadCategories { get; set; }
         public virtual DbSet<LoginLog> LoginLogs { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<Page> Pages { get; set; }

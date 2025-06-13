@@ -90,6 +90,36 @@
     <Property Name="DistrictName" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="StateId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="LeadAssign">
+    <Key>
+      <PropertyRef Name="LeadId" />
+    </Key>
+    <Property Name="LeadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StaffId" Type="int" Nullable="false" />
+    <Property Name="LeadDate" Type="datetime" Nullable="false" />
+    <Property Name="LeadCategoryId" Type="int" Nullable="false" />
+    <Property Name="LeadDetail" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Attachment" Type="nvarchar" MaxLength="250" />
+    <Property Name="FileType" Type="nvarchar" MaxLength="100" />
+    <Property Name="Instruction" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LeadCategory">
+    <Key>
+      <PropertyRef Name="LeadCategoryId" />
+    </Key>
+    <Property Name="LeadCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LeadCategoryName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedOn" Type="datetime" />
+  </EntityType>
   <EntityType Name="LoginLog">
     <Key>
       <PropertyRef Name="LoginLogId" />
@@ -320,6 +350,78 @@
       </Principal>
       <Dependent Role="District">
         <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeadAssign_LeadCategory">
+    <End Role="LeadCategory" Type="Self.LeadCategory" Multiplicity="1" />
+    <End Role="LeadAssign" Type="Self.LeadAssign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LeadCategory">
+        <PropertyRef Name="LeadCategoryId" />
+      </Principal>
+      <Dependent Role="LeadAssign">
+        <PropertyRef Name="LeadCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeadAssign_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="LeadAssign" Type="Self.LeadAssign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="LeadAssign">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeadAssign_StaffLogin">
+    <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="0..1" />
+    <End Role="LeadAssign" Type="Self.LeadAssign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffLogin">
+        <PropertyRef Name="StaffLoginId" />
+      </Principal>
+      <Dependent Role="LeadAssign">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeadAssign_StaffLogin1">
+    <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="1" />
+    <End Role="LeadAssign" Type="Self.LeadAssign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffLogin">
+        <PropertyRef Name="StaffLoginId" />
+      </Principal>
+      <Dependent Role="LeadAssign">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeadCategory_StaffLogin">
+    <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="1" />
+    <End Role="LeadCategory" Type="Self.LeadCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffLogin">
+        <PropertyRef Name="StaffLoginId" />
+      </Principal>
+      <Dependent Role="LeadCategory">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeadCategory_StaffLogin1">
+    <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="0..1" />
+    <End Role="LeadCategory" Type="Self.LeadCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffLogin">
+        <PropertyRef Name="StaffLoginId" />
+      </Principal>
+      <Dependent Role="LeadCategory">
+        <PropertyRef Name="UpdatedBy" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -576,6 +678,8 @@
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeadAssign" EntityType="Self.LeadAssign" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeadCategory" EntityType="Self.LeadCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoginLog" EntityType="Self.LoginLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
@@ -614,6 +718,30 @@
     <AssociationSet Name="FK_District_State" Association="Self.FK_District_State">
       <End Role="State" EntitySet="State" />
       <End Role="District" EntitySet="District" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeadAssign_LeadCategory" Association="Self.FK_LeadAssign_LeadCategory">
+      <End Role="LeadCategory" EntitySet="LeadCategory" />
+      <End Role="LeadAssign" EntitySet="LeadAssign" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeadAssign_Staff" Association="Self.FK_LeadAssign_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="LeadAssign" EntitySet="LeadAssign" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeadAssign_StaffLogin" Association="Self.FK_LeadAssign_StaffLogin">
+      <End Role="StaffLogin" EntitySet="StaffLogin" />
+      <End Role="LeadAssign" EntitySet="LeadAssign" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeadAssign_StaffLogin1" Association="Self.FK_LeadAssign_StaffLogin1">
+      <End Role="StaffLogin" EntitySet="StaffLogin" />
+      <End Role="LeadAssign" EntitySet="LeadAssign" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeadCategory_StaffLogin" Association="Self.FK_LeadCategory_StaffLogin">
+      <End Role="StaffLogin" EntitySet="StaffLogin" />
+      <End Role="LeadCategory" EntitySet="LeadCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeadCategory_StaffLogin1" Association="Self.FK_LeadCategory_StaffLogin1">
+      <End Role="StaffLogin" EntitySet="StaffLogin" />
+      <End Role="LeadCategory" EntitySet="LeadCategory" />
     </AssociationSet>
     <AssociationSet Name="FK_Menu_Menu" Association="Self.FK_Menu_Menu">
       <End Role="Menu" EntitySet="Menu" />

@@ -19,6 +19,10 @@ namespace Project
         {
             this.Cities = new HashSet<City>();
             this.Companies = new HashSet<Company>();
+            this.LeadAssigns = new HashSet<LeadAssign>();
+            this.LeadAssigns1 = new HashSet<LeadAssign>();
+            this.LeadCategories = new HashSet<LeadCategory>();
+            this.LeadCategories1 = new HashSet<LeadCategory>();
             this.Menus = new HashSet<Menu>();
             this.Pages = new HashSet<Page>();
             this.PageGroups = new HashSet<PageGroup>();
@@ -46,6 +50,14 @@ namespace Project
         public virtual ICollection<City> Cities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Company> Companies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LeadAssign> LeadAssigns { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LeadAssign> LeadAssigns1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LeadCategory> LeadCategories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LeadCategory> LeadCategories1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Menu> Menus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

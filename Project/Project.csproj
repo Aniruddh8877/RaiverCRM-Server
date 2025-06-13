@@ -82,6 +82,12 @@
       <DependentUpon>RaiverCRM.tt</DependentUpon>
     </Compile>
     <Compile Include="Enumerator.cs" />
+    <Compile Include="LeadAssign.cs">
+      <DependentUpon>RaiverCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeadCategory.cs">
+      <DependentUpon>RaiverCRM.tt</DependentUpon>
+    </Compile>
     <Compile Include="LoginLog.cs">
       <DependentUpon>RaiverCRM.tt</DependentUpon>
     </Compile>

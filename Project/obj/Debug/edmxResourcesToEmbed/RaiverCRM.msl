@@ -99,6 +99,38 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="LeadAssigns">
+      <EntityTypeMapping TypeName="RaiverCRMModel.LeadAssign">
+        <MappingFragment StoreEntitySet="LeadAssign">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="FileType" ColumnName="FileType" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="LeadDetail" ColumnName="LeadDetail" />
+          <ScalarProperty Name="LeadCategoryId" ColumnName="LeadCategoryId" />
+          <ScalarProperty Name="LeadDate" ColumnName="LeadDate" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="LeadId" ColumnName="LeadId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeadCategories">
+      <EntityTypeMapping TypeName="RaiverCRMModel.LeadCategory">
+        <MappingFragment StoreEntitySet="LeadCategory">
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LeadCategoryName" ColumnName="LeadCategoryName" />
+          <ScalarProperty Name="LeadCategoryId" ColumnName="LeadCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="LoginLogs">
       <EntityTypeMapping TypeName="RaiverCRMModel.LoginLog">
         <MappingFragment StoreEntitySet="LoginLog">

@@ -9,6 +9,8 @@
     <EntitySet Name="Departments" EntityType="RaiverCRMModel.Department" />
     <EntitySet Name="Designations" EntityType="RaiverCRMModel.Designation" />
     <EntitySet Name="Districts" EntityType="RaiverCRMModel.District" />
+    <EntitySet Name="LeadAssigns" EntityType="RaiverCRMModel.LeadAssign" />
+    <EntitySet Name="LeadCategories" EntityType="RaiverCRMModel.LeadCategory" />
     <EntitySet Name="LoginLogs" EntityType="RaiverCRMModel.LoginLog" />
     <EntitySet Name="Menus" EntityType="RaiverCRMModel.Menu" />
     <EntitySet Name="Pages" EntityType="RaiverCRMModel.Page" />
@@ -55,6 +57,30 @@
     <AssociationSet Name="FK_District_State" Association="RaiverCRMModel.FK_District_State">
       <End Role="State" EntitySet="States" />
       <End Role="District" EntitySet="Districts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeadAssign_LeadCategory" Association="RaiverCRMModel.FK_LeadAssign_LeadCategory">
+      <End Role="LeadCategory" EntitySet="LeadCategories" />
+      <End Role="LeadAssign" EntitySet="LeadAssigns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeadAssign_Staff" Association="RaiverCRMModel.FK_LeadAssign_Staff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="LeadAssign" EntitySet="LeadAssigns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeadAssign_StaffLogin" Association="RaiverCRMModel.FK_LeadAssign_StaffLogin">
+      <End Role="StaffLogin" EntitySet="StaffLogins" />
+      <End Role="LeadAssign" EntitySet="LeadAssigns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeadAssign_StaffLogin1" Association="RaiverCRMModel.FK_LeadAssign_StaffLogin1">
+      <End Role="StaffLogin" EntitySet="StaffLogins" />
+      <End Role="LeadAssign" EntitySet="LeadAssigns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeadCategory_StaffLogin" Association="RaiverCRMModel.FK_LeadCategory_StaffLogin">
+      <End Role="StaffLogin" EntitySet="StaffLogins" />
+      <End Role="LeadCategory" EntitySet="LeadCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeadCategory_StaffLogin1" Association="RaiverCRMModel.FK_LeadCategory_StaffLogin1">
+      <End Role="StaffLogin" EntitySet="StaffLogins" />
+      <End Role="LeadCategory" EntitySet="LeadCategories" />
     </AssociationSet>
     <AssociationSet Name="FK_Menu_Menu" Association="RaiverCRMModel.FK_Menu_Menu">
       <End Role="Menu" EntitySet="Menus" />
@@ -228,6 +254,43 @@
     <Property Name="StateId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="State" Relationship="RaiverCRMModel.FK_District_State" FromRole="District" ToRole="State" />
   </EntityType>
+  <EntityType Name="LeadAssign">
+    <Key>
+      <PropertyRef Name="LeadId" />
+    </Key>
+    <Property Name="LeadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StaffId" Type="Int32" Nullable="false" />
+    <Property Name="LeadDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LeadCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="LeadDetail" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Attachment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FileType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Instruction" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="LeadCategory" Relationship="RaiverCRMModel.FK_LeadAssign_LeadCategory" FromRole="LeadAssign" ToRole="LeadCategory" />
+    <NavigationProperty Name="Staff" Relationship="RaiverCRMModel.FK_LeadAssign_Staff" FromRole="LeadAssign" ToRole="Staff" />
+    <NavigationProperty Name="StaffLogin" Relationship="RaiverCRMModel.FK_LeadAssign_StaffLogin" FromRole="LeadAssign" ToRole="StaffLogin" />
+    <NavigationProperty Name="StaffLogin1" Relationship="RaiverCRMModel.FK_LeadAssign_StaffLogin1" FromRole="LeadAssign" ToRole="StaffLogin" />
+  </EntityType>
+  <EntityType Name="LeadCategory">
+    <Key>
+      <PropertyRef Name="LeadCategoryId" />
+    </Key>
+    <Property Name="LeadCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LeadCategoryName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="LeadAssigns" Relationship="RaiverCRMModel.FK_LeadAssign_LeadCategory" FromRole="LeadCategory" ToRole="LeadAssign" />
+    <NavigationProperty Name="StaffLogin" Relationship="RaiverCRMModel.FK_LeadCategory_StaffLogin" FromRole="LeadCategory" ToRole="StaffLogin" />
+    <NavigationProperty Name="StaffLogin1" Relationship="RaiverCRMModel.FK_LeadCategory_StaffLogin1" FromRole="LeadCategory" ToRole="StaffLogin" />
+  </EntityType>
   <EntityType Name="LoginLog">
     <Key>
       <PropertyRef Name="LoginLogId" />
@@ -351,6 +414,7 @@
     <NavigationProperty Name="Databases1" Relationship="RaiverCRMModel.FK_Database_Staff1" FromRole="Staff" ToRole="Database" />
     <NavigationProperty Name="Department" Relationship="RaiverCRMModel.FK_Staff_Department" FromRole="Staff" ToRole="Department" />
     <NavigationProperty Name="Designation" Relationship="RaiverCRMModel.FK_Staff_Designation" FromRole="Staff" ToRole="Designation" />
+    <NavigationProperty Name="LeadAssigns" Relationship="RaiverCRMModel.FK_LeadAssign_Staff" FromRole="Staff" ToRole="LeadAssign" />
     <NavigationProperty Name="StaffLogin" Relationship="RaiverCRMModel.FK_Staff_StaffLogin" FromRole="Staff" ToRole="StaffLogin" />
     <NavigationProperty Name="StaffLogins" Relationship="RaiverCRMModel.FK_StaffLogin_Staff" FromRole="Staff" ToRole="StaffLogin" />
   </EntityType>
@@ -369,6 +433,10 @@
     <Property Name="Status" Type="Byte" Nullable="false" />
     <NavigationProperty Name="Cities" Relationship="RaiverCRMModel.FK_City_StaffLogin" FromRole="StaffLogin" ToRole="City" />
     <NavigationProperty Name="Companies" Relationship="RaiverCRMModel.FK_Company_StaffLogin" FromRole="StaffLogin" ToRole="Company" />
+    <NavigationProperty Name="LeadAssigns" Relationship="RaiverCRMModel.FK_LeadAssign_StaffLogin" FromRole="StaffLogin" ToRole="LeadAssign" />
+    <NavigationProperty Name="LeadAssigns1" Relationship="RaiverCRMModel.FK_LeadAssign_StaffLogin1" FromRole="StaffLogin" ToRole="LeadAssign" />
+    <NavigationProperty Name="LeadCategories" Relationship="RaiverCRMModel.FK_LeadCategory_StaffLogin" FromRole="StaffLogin" ToRole="LeadCategory" />
+    <NavigationProperty Name="LeadCategories1" Relationship="RaiverCRMModel.FK_LeadCategory_StaffLogin1" FromRole="StaffLogin" ToRole="LeadCategory" />
     <NavigationProperty Name="Menus" Relationship="RaiverCRMModel.FK_Menu_StaffLogin" FromRole="StaffLogin" ToRole="Menu" />
     <NavigationProperty Name="Pages" Relationship="RaiverCRMModel.FK_Page_StaffLogin" FromRole="StaffLogin" ToRole="Page" />
     <NavigationProperty Name="PageGroups" Relationship="RaiverCRMModel.FK_PageGroup_StaffLogin" FromRole="StaffLogin" ToRole="PageGroup" />
@@ -527,6 +595,78 @@
       </Principal>
       <Dependent Role="District">
         <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeadAssign_LeadCategory">
+    <End Type="RaiverCRMModel.LeadCategory" Role="LeadCategory" Multiplicity="1" />
+    <End Type="RaiverCRMModel.LeadAssign" Role="LeadAssign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LeadCategory">
+        <PropertyRef Name="LeadCategoryId" />
+      </Principal>
+      <Dependent Role="LeadAssign">
+        <PropertyRef Name="LeadCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeadAssign_Staff">
+    <End Type="RaiverCRMModel.Staff" Role="Staff" Multiplicity="1" />
+    <End Type="RaiverCRMModel.LeadAssign" Role="LeadAssign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="LeadAssign">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeadAssign_StaffLogin">
+    <End Type="RaiverCRMModel.StaffLogin" Role="StaffLogin" Multiplicity="0..1" />
+    <End Type="RaiverCRMModel.LeadAssign" Role="LeadAssign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffLogin">
+        <PropertyRef Name="StaffLoginId" />
+      </Principal>
+      <Dependent Role="LeadAssign">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeadAssign_StaffLogin1">
+    <End Type="RaiverCRMModel.StaffLogin" Role="StaffLogin" Multiplicity="1" />
+    <End Type="RaiverCRMModel.LeadAssign" Role="LeadAssign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffLogin">
+        <PropertyRef Name="StaffLoginId" />
+      </Principal>
+      <Dependent Role="LeadAssign">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeadCategory_StaffLogin">
+    <End Type="RaiverCRMModel.StaffLogin" Role="StaffLogin" Multiplicity="1" />
+    <End Type="RaiverCRMModel.LeadCategory" Role="LeadCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffLogin">
+        <PropertyRef Name="StaffLoginId" />
+      </Principal>
+      <Dependent Role="LeadCategory">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeadCategory_StaffLogin1">
+    <End Type="RaiverCRMModel.StaffLogin" Role="StaffLogin" Multiplicity="0..1" />
+    <End Type="RaiverCRMModel.LeadCategory" Role="LeadCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffLogin">
+        <PropertyRef Name="StaffLoginId" />
+      </Principal>
+      <Dependent Role="LeadCategory">
+        <PropertyRef Name="UpdatedBy" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

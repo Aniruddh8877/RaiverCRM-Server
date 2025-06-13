@@ -254,6 +254,8 @@
     <Compile Include="Controllers\api\DepartmentController.cs" />
     <Compile Include="Controllers\api\DesignationController.cs" />
     <Compile Include="Controllers\api\DistrictController.cs" />
+    <Compile Include="Controllers\api\LeadAssignController.cs" />
+    <Compile Include="Controllers\api\LeadCategoryController.cs" />
     <Compile Include="Controllers\api\MenuController.cs" />
     <Compile Include="Controllers\api\PageController.cs" />
     <Compile Include="Controllers\api\PageGroupController.cs" />

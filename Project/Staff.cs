@@ -20,6 +20,7 @@ namespace Project
             this.Backups = new HashSet<Backup>();
             this.Databases = new HashSet<Database>();
             this.Databases1 = new HashSet<Database>();
+            this.LeadAssigns = new HashSet<LeadAssign>();
             this.StaffLogins = new HashSet<StaffLogin>();
         }
     
@@ -53,6 +54,8 @@ namespace Project
         public virtual ICollection<Database> Databases1 { get; set; }
         public virtual Department Department { get; set; }
         public virtual Designation Designation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LeadAssign> LeadAssigns { get; set; }
         public virtual StaffLogin StaffLogin { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StaffLogin> StaffLogins { get; set; }
