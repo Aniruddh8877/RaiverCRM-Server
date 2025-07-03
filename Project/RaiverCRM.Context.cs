@@ -35,6 +35,10 @@ namespace Project
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<LeadAssign> LeadAssigns { get; set; }
         public virtual DbSet<LeadCategory> LeadCategories { get; set; }
+        public virtual DbSet<LeadDetail> LeadDetails { get; set; }
+        public virtual DbSet<LeadFollowUp> LeadFollowUps { get; set; }
+        public virtual DbSet<LeaveDetail> LeaveDetails { get; set; }
+        public virtual DbSet<LeaveRequest> LeaveRequests { get; set; }
         public virtual DbSet<LoginLog> LoginLogs { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<Page> Pages { get; set; }

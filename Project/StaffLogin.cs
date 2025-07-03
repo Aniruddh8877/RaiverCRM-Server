@@ -23,6 +23,10 @@ namespace Project
             this.LeadAssigns1 = new HashSet<LeadAssign>();
             this.LeadCategories = new HashSet<LeadCategory>();
             this.LeadCategories1 = new HashSet<LeadCategory>();
+            this.LeaveDetails = new HashSet<LeaveDetail>();
+            this.LeaveDetails1 = new HashSet<LeaveDetail>();
+            this.LeaveRequests = new HashSet<LeaveRequest>();
+            this.LeaveRequests1 = new HashSet<LeaveRequest>();
             this.Menus = new HashSet<Menu>();
             this.Pages = new HashSet<Page>();
             this.PageGroups = new HashSet<PageGroup>();
@@ -58,6 +62,14 @@ namespace Project
         public virtual ICollection<LeadCategory> LeadCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LeadCategory> LeadCategories1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LeaveDetail> LeaveDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LeaveDetail> LeaveDetails1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LeaveRequest> LeaveRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LeaveRequest> LeaveRequests1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Menu> Menus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

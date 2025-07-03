@@ -108,8 +108,8 @@
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="Instruction" ColumnName="Instruction" />
-          <ScalarProperty Name="FileType" ColumnName="FileType" />
-          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="FileFormat" ColumnName="FileFormat" />
+          <ScalarProperty Name="Attachments" ColumnName="Attachments" />
           <ScalarProperty Name="LeadDetail" ColumnName="LeadDetail" />
           <ScalarProperty Name="LeadCategoryId" ColumnName="LeadCategoryId" />
           <ScalarProperty Name="LeadDate" ColumnName="LeadDate" />
@@ -128,6 +128,65 @@
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="LeadCategoryName" ColumnName="LeadCategoryName" />
           <ScalarProperty Name="LeadCategoryId" ColumnName="LeadCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeadDetails">
+      <EntityTypeMapping TypeName="RaiverCRMModel.LeadDetail">
+        <MappingFragment StoreEntitySet="LeadDetails">
+          <ScalarProperty Name="FollowUpDate" ColumnName="FollowUpDate" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="LeadStatus" ColumnName="LeadStatus" />
+          <ScalarProperty Name="LeadId" ColumnName="LeadId" />
+          <ScalarProperty Name="LeadComment" ColumnName="LeadComment" />
+          <ScalarProperty Name="LeadMobileNo" ColumnName="LeadMobileNo" />
+          <ScalarProperty Name="LeadName" ColumnName="LeadName" />
+          <ScalarProperty Name="LeadDetailId" ColumnName="LeadDetailId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeadFollowUps">
+      <EntityTypeMapping TypeName="RaiverCRMModel.LeadFollowUp">
+        <MappingFragment StoreEntitySet="LeadFollowUp">
+          <ScalarProperty Name="FollowUpStauts" ColumnName="FollowUpStauts" />
+          <ScalarProperty Name="FollowUpComment" ColumnName="FollowUpComment" />
+          <ScalarProperty Name="FollowUpDate" ColumnName="FollowUpDate" />
+          <ScalarProperty Name="LeadDetailId" ColumnName="LeadDetailId" />
+          <ScalarProperty Name="LeadId" ColumnName="LeadId" />
+          <ScalarProperty Name="LeadFollowUpId" ColumnName="LeadFollowUpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeaveDetails">
+      <EntityTypeMapping TypeName="RaiverCRMModel.LeaveDetail">
+        <MappingFragment StoreEntitySet="LeaveDetail">
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Opinion" ColumnName="Opinion" />
+          <ScalarProperty Name="StatusUpdatedDate" ColumnName="StatusUpdatedDate" />
+          <ScalarProperty Name="LeaveStatus" ColumnName="LeaveStatus" />
+          <ScalarProperty Name="LeaveId" ColumnName="LeaveId" />
+          <ScalarProperty Name="LeaveDetailsId" ColumnName="LeaveDetailsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeaveRequests">
+      <EntityTypeMapping TypeName="RaiverCRMModel.LeaveRequest">
+        <MappingFragment StoreEntitySet="LeaveRequest">
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LeaveStatus" ColumnName="LeaveStatus" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+          <ScalarProperty Name="LeaveDateFrom" ColumnName="LeaveDateFrom" />
+          <ScalarProperty Name="LeaveDateTo" ColumnName="LeaveDateTo" />
+          <ScalarProperty Name="LeaveType" ColumnName="LeaveType" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="LeaveId" ColumnName="LeaveId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

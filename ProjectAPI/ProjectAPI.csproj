@@ -256,6 +256,9 @@
     <Compile Include="Controllers\api\DistrictController.cs" />
     <Compile Include="Controllers\api\LeadAssignController.cs" />
     <Compile Include="Controllers\api\LeadCategoryController.cs" />
+    <Compile Include="Controllers\api\LeadDetailController.cs" />
+    <Compile Include="Controllers\api\LeaveDetailController.cs" />
+    <Compile Include="Controllers\api\LeaveRequestController.cs" />
     <Compile Include="Controllers\api\MenuController.cs" />
     <Compile Include="Controllers\api\PageController.cs" />
     <Compile Include="Controllers\api\PageGroupController.cs" />
@@ -265,6 +268,7 @@
     <Compile Include="Controllers\api\StaffLoginController.cs" />
     <Compile Include="Controllers\api\StaffLoginRoleController.cs" />
     <Compile Include="Controllers\api\StateController.cs" />
+    <Compile Include="Controllers\api\WASTE.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

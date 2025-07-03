@@ -6,6 +6,21 @@ using System.Threading.Tasks;
 
 namespace Project
 {
+    public class LeaveRequestModel
+    {
+        public LeaveRequest GetLeaveRequest { get; set; }
+        public LeaveDetail GetLeaveDetails { get; set; }
+    }
+
+
+
+    public class LeadAssignModel
+    {
+        public LeadAssign GetLeadAssign { get; set; }
+        public List<LeadDetail> GetLeadDetails { get; set; }
+
+        public LeadFollowUp GetLeadFollow { get; set; }
+    }
 
     public class ChangePasswordModel
     {

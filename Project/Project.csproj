@@ -88,6 +88,18 @@
     <Compile Include="LeadCategory.cs">
       <DependentUpon>RaiverCRM.tt</DependentUpon>
     </Compile>
+    <Compile Include="LeadDetail.cs">
+      <DependentUpon>RaiverCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeadFollowUp.cs">
+      <DependentUpon>RaiverCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeaveDetail.cs">
+      <DependentUpon>RaiverCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeaveRequest.cs">
+      <DependentUpon>RaiverCRM.tt</DependentUpon>
+    </Compile>
     <Compile Include="LoginLog.cs">
       <DependentUpon>RaiverCRM.tt</DependentUpon>
     </Compile>

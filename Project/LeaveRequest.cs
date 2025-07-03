@@ -12,33 +12,31 @@ namespace Project
     using System;
     using System.Collections.Generic;
     
-    public partial class LeadAssign
+    public partial class LeaveRequest
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LeadAssign()
+        public LeaveRequest()
         {
-            this.LeadDetails = new HashSet<LeadDetail>();
+            this.LeaveDetails = new HashSet<LeaveDetail>();
         }
     
-        public int LeadId { get; set; }
+        public int LeaveId { get; set; }
         public int StaffId { get; set; }
-        public System.DateTime LeadDate { get; set; }
-        public int LeadCategoryId { get; set; }
-        public string LeadDetail { get; set; }
-        public string Attachments { get; set; }
-        public string FileFormat { get; set; }
-        public string Instruction { get; set; }
+        public byte LeaveType { get; set; }
+        public System.DateTime LeaveDateTo { get; set; }
+        public System.DateTime LeaveDateFrom { get; set; }
+        public int NoOfDays { get; set; }
+        public string Message { get; set; }
+        public byte LeaveStatus { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
-        public byte Status { get; set; }
     
-        public virtual LeadCategory LeadCategory { get; set; }
-        public virtual Staff Staff { get; set; }
-        public virtual StaffLogin StaffLogin { get; set; }
-        public virtual StaffLogin StaffLogin1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LeadDetail> LeadDetails { get; set; }
+        public virtual ICollection<LeaveDetail> LeaveDetails { get; set; }
+        public virtual StaffLogin StaffLogin { get; set; }
+        public virtual Staff Staff { get; set; }
+        public virtual StaffLogin StaffLogin1 { get; set; }
     }
 }

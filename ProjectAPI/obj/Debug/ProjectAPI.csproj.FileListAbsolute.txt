@@ -60,6 +60,8 @@ D:\PROJECT\Template_For_New_Project\ProjectAPI\ProjectAPI\bin\System.Runtime.Com
 D:\PROJECT\Template_For_New_Project\ProjectAPI\ProjectAPI\bin\System.Threading.Tasks.Extensions.xml
 D:\PROJECT\Template_For_New_Project\ProjectAPI\ProjectAPI\bin\System.Web.Http.Cors.xml
 D:\PROJECT\Template_For_New_Project\ProjectAPI\ProjectAPI\obj\Debug\ProjectAPI.csproj.Up2Date
+C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\obj\Debug\ProjectAPI.csproj.AssemblyReference.cache
+C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\obj\Debug\ProjectAPI.csproj.CoreCompileInputs.cache
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\bin\ProjectAPI.dll.config
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\bin\ProjectAPI.dll
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\bin\ProjectAPI.pdb
@@ -116,8 +118,6 @@ C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\bin\System.Web.We
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\bin\System.Web.WebPages.Razor.xml
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\bin\System.Web.Optimization.xml
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\bin\Antlr3.Runtime.pdb
-C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\obj\Debug\ProjectAPI.csproj.AssemblyReference.cache
-C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\obj\Debug\ProjectAPI.csproj.CoreCompileInputs.cache
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\obj\Debug\ProjectAPI.csproj.CopyComplete
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\obj\Debug\ProjectAPI.dll
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\ProjectAPI\obj\Debug\ProjectAPI.pdb

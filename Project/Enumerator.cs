@@ -6,6 +6,28 @@ using System.Threading.Tasks;
 
 namespace Project
 {
+
+    public enum Leavestatus
+    {
+        Pending = 1,
+        Rejected=2,
+        Approved = 3,
+        Cancled = 4,
+    }
+    public enum LeaveType
+    {
+        CasualLeave = 1,
+        SickLeave = 2,
+        EarnedLeave = 3,
+        MaternityLeave = 4,
+        PaternityLeave = 5,
+        BereavementLeave = 6,
+        UnpaidLeave = 7,
+        CompOff = 8,
+        HalfDayLeave = 9,
+        SpecialLeave = 10
+    }
+
     public enum BillStatus
     {
         Paid = 1,
@@ -124,6 +146,15 @@ namespace Project
         Pending = 1,
         InProgress = 2,
         Completed = 3,
+    }
+
+    public enum LeadStatus
+    {
+        Pending =1,
+        Closed = 2,
+        FollowUp = 3,
+        NotInterest =4,
+        NotResponsed=5
     }
 
 }

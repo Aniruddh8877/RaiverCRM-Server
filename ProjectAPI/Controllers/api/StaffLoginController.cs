@@ -325,10 +325,11 @@ namespace ProjectAPI.Controllers.api
                                            d3.RoleId
                                        }).First();
                 response.Message = ConstantData.SuccessMessage;
+                dbContext.LoginLogs.Add(loginLog);
+                
             }
             catch (Exception ex)
             {
-                dbContext.LoginLogs.Add(loginLog);
                 dbContext.SaveChanges();
                 response.Message = ex.Message;
             }
