@@ -28,8 +28,12 @@ namespace Project
             this.LeaveRequests = new HashSet<LeaveRequest>();
             this.LeaveRequests1 = new HashSet<LeaveRequest>();
             this.Menus = new HashSet<Menu>();
+            this.Notices = new HashSet<Notice>();
+            this.Notices1 = new HashSet<Notice>();
             this.Pages = new HashSet<Page>();
             this.PageGroups = new HashSet<PageGroup>();
+            this.Resignations = new HashSet<Resignation>();
+            this.Resignations1 = new HashSet<Resignation>();
             this.Roles = new HashSet<Role>();
             this.RoleMenus = new HashSet<RoleMenu>();
             this.Staffs = new HashSet<Staff>();
@@ -73,9 +77,17 @@ namespace Project
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Menu> Menus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Notice> Notices { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Notice> Notices1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Page> Pages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PageGroup> PageGroups { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Resignation> Resignations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Resignation> Resignations1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Role> Roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

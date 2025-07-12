@@ -224,6 +224,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Notices">
+      <EntityTypeMapping TypeName="RaiverCRMModel.Notice">
+        <MappingFragment StoreEntitySet="Notice">
+          <ScalarProperty Name="UpdaedOn" ColumnName="UpdaedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="NoticeStatus" ColumnName="NoticeStatus" />
+          <ScalarProperty Name="FileFormate" ColumnName="FileFormate" />
+          <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+          <ScalarProperty Name="NoticeDetail" ColumnName="NoticeDetail" />
+          <ScalarProperty Name="Noticedate" ColumnName="Noticedate" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="NoticeId" ColumnName="NoticeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Pages">
       <EntityTypeMapping TypeName="RaiverCRMModel.Page">
         <MappingFragment StoreEntitySet="Page">
@@ -245,6 +262,38 @@
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="PageGroupName" ColumnName="PageGroupName" />
           <ScalarProperty Name="PageGroupId" ColumnName="PageGroupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Resignations">
+      <EntityTypeMapping TypeName="RaiverCRMModel.Resignation">
+        <MappingFragment StoreEntitySet="Resignation">
+          <ScalarProperty Name="UpdaedOn" ColumnName="UpdaedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="Resignationstatus" ColumnName="Resignationstatus" />
+          <ScalarProperty Name="BreafReason" ColumnName="BreafReason" />
+          <ScalarProperty Name="Statement" ColumnName="Statement" />
+          <ScalarProperty Name="DepatureDate" ColumnName="DepatureDate" />
+          <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+          <ScalarProperty Name="ResignationId" ColumnName="ResignationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResignationDetails">
+      <EntityTypeMapping TypeName="RaiverCRMModel.ResignationDetail">
+        <MappingFragment StoreEntitySet="ResignationDetail">
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="StatusUpdateDate" ColumnName="StatusUpdateDate" />
+          <ScalarProperty Name="BreafReason" ColumnName="BreafReason" />
+          <ScalarProperty Name="ResignationStatus" ColumnName="ResignationStatus" />
+          <ScalarProperty Name="DepatureDate" ColumnName="DepatureDate" />
+          <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+          <ScalarProperty Name="ResignationId" ColumnName="ResignationId" />
+          <ScalarProperty Name="ResignationDetailId" ColumnName="ResignationDetailId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -273,9 +322,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SalaryManagements">
+      <EntityTypeMapping TypeName="RaiverCRMModel.SalaryManagement">
+        <MappingFragment StoreEntitySet="SalaryManagement">
+          <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="TransactionNo" ColumnName="TransactionNo" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="WorkingDay" ColumnName="WorkingDay" />
+          <ScalarProperty Name="AbsentDay" ColumnName="AbsentDay" />
+          <ScalarProperty Name="TotalWorkingDay" ColumnName="TotalWorkingDay" />
+          <ScalarProperty Name="Months" ColumnName="Months" />
+          <ScalarProperty Name="SalaryId" ColumnName="SalaryId" />
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Staffs">
       <EntityTypeMapping TypeName="RaiverCRMModel.Staff">
         <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
           <ScalarProperty Name="DOB" ColumnName="DOB" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />

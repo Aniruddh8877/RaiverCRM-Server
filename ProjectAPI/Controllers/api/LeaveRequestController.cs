@@ -172,6 +172,7 @@ namespace ProjectAPI.Controllers.api
                                 // ✅ Insert new LeaveDetail
                                 LeaveDetail leaveDetail = new LeaveDetail
                                 {
+
                                     LeaveId = leaveId,
                                     LeaveStatus = (int)Leavestatus.Pending,
                                     StatusUpdatedDate = null,

@@ -176,7 +176,7 @@ namespace Project
             if (data.Any())
                 SlNo = Convert.ToInt32(data.First().StaffCode.Substring(4));
             SlNo += 1;
-            return "STF" + SlNo.ToString("D10");
+            return "STF" + SlNo.ToString("D3");
         }
 
     }

@@ -53,6 +53,7 @@ namespace ProjectAPI.Controllers.api
                                 d1.CreatedBy,
                                 d1.CreatedDate,
                                 d1.DOB,
+                                d1.BasicSalary,
                             }).ToList();
 
                 response.StaffList = list;
@@ -99,6 +100,7 @@ namespace ProjectAPI.Controllers.api
                     Staff.JoinDate = model.JoinDate;
                     Staff.DepartmentId = model.DepartmentId;
                     Staff.DOB = model.DOB;
+                    Staff.BasicSalary = model.BasicSalary;
                 }
                 else
                 {

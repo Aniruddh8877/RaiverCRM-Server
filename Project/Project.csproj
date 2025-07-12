@@ -107,6 +107,9 @@
       <DependentUpon>RaiverCRM.tt</DependentUpon>
     </Compile>
     <Compile Include="ModalClasses.cs" />
+    <Compile Include="Notice.cs">
+      <DependentUpon>RaiverCRM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Page.cs">
       <DependentUpon>RaiverCRM.tt</DependentUpon>
     </Compile>
@@ -129,10 +132,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RaiverCRM.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Resignation.cs">
+      <DependentUpon>RaiverCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResignationDetail.cs">
+      <DependentUpon>RaiverCRM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>RaiverCRM.tt</DependentUpon>
     </Compile>
     <Compile Include="RoleMenu.cs">
+      <DependentUpon>RaiverCRM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalaryManagement.cs">
       <DependentUpon>RaiverCRM.tt</DependentUpon>
     </Compile>
     <Compile Include="Staff.cs">

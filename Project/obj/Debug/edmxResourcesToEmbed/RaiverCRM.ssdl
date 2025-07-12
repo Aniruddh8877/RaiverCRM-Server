@@ -207,6 +207,22 @@
     <Property Name="UpdatedBy" Type="int" />
     <Property Name="UpdatedDate" Type="date" />
   </EntityType>
+  <EntityType Name="Notice">
+    <Key>
+      <PropertyRef Name="NoticeId" />
+    </Key>
+    <Property Name="NoticeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StaffId" Type="int" Nullable="false" />
+    <Property Name="Noticedate" Type="datetime" Nullable="false" />
+    <Property Name="NoticeDetail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Attachments" Type="nvarchar(max)" />
+    <Property Name="FileFormate" Type="nvarchar(max)" />
+    <Property Name="NoticeStatus" Type="tinyint" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdaedOn" Type="datetime" />
+  </EntityType>
   <EntityType Name="Page">
     <Key>
       <PropertyRef Name="PageId" />
@@ -228,6 +244,36 @@
     <Property Name="Status" Type="tinyint" Nullable="false" />
     <Property Name="UpdatedBy" Type="int" />
     <Property Name="UpdatedDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Resignation">
+    <Key>
+      <PropertyRef Name="ResignationId" />
+    </Key>
+    <Property Name="ResignationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JoinDate" Type="datetime" Nullable="false" />
+    <Property Name="DepatureDate" Type="datetime" Nullable="false" />
+    <Property Name="Statement" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="BreafReason" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Resignationstatus" Type="tinyint" Nullable="false" />
+    <Property Name="Instruction" Type="nvarchar" MaxLength="250" />
+    <Property Name="StaffId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdaedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ResignationDetail">
+    <Key>
+      <PropertyRef Name="ResignationDetailId" />
+    </Key>
+    <Property Name="ResignationDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResignationId" Type="int" Nullable="false" />
+    <Property Name="JoinDate" Type="datetime" Nullable="false" />
+    <Property Name="DepatureDate" Type="datetime" Nullable="false" />
+    <Property Name="ResignationStatus" Type="tinyint" Nullable="false" />
+    <Property Name="BreafReason" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StatusUpdateDate" Type="datetime" />
+    <Property Name="Instruction" Type="nvarchar" MaxLength="350" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -251,6 +297,23 @@
     <Property Name="CanEdit" Type="bit" Nullable="false" />
     <Property Name="CanDelete" Type="bit" Nullable="false" />
     <Property Name="CanCreate" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalaryManagement">
+    <Key>
+      <PropertyRef Name="SalaryId" />
+    </Key>
+    <Property Name="StaffId" Type="int" Nullable="false" />
+    <Property Name="SalaryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Months" Type="tinyint" Nullable="false" />
+    <Property Name="TotalWorkingDay" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AbsentDay" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WorkingDay" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PaymentMode" Type="tinyint" Nullable="false" />
+    <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TransactionNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+    <Property Name="BasicSalary" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Staff">
     <Key>
@@ -277,6 +340,7 @@
     <Property Name="CreatedBy" Type="int" />
     <Property Name="CreatedDate" Type="datetime" />
     <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="BasicSalary" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="StaffLogin">
     <Key>
@@ -564,6 +628,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Notic_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="Notice">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notic_StaffLogin">
+    <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="1" />
+    <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffLogin">
+        <PropertyRef Name="StaffLoginId" />
+      </Principal>
+      <Dependent Role="Notice">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notic_StaffLogin1">
+    <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="0..1" />
+    <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffLogin">
+        <PropertyRef Name="StaffLoginId" />
+      </Principal>
+      <Dependent Role="Notice">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Page_PageGroup">
     <End Role="PageGroup" Type="Self.PageGroup" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -599,6 +699,54 @@
       </Principal>
       <Dependent Role="PageGroup">
         <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resignation_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Resignation" Type="Self.Resignation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="Resignation">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resignation_StaffLogin">
+    <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="0..1" />
+    <End Role="Resignation" Type="Self.Resignation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffLogin">
+        <PropertyRef Name="StaffLoginId" />
+      </Principal>
+      <Dependent Role="Resignation">
+        <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resignation_StaffLogin1">
+    <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="1" />
+    <End Role="Resignation" Type="Self.Resignation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffLogin">
+        <PropertyRef Name="StaffLoginId" />
+      </Principal>
+      <Dependent Role="Resignation">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResignationDetail_Resignation">
+    <End Role="Resignation" Type="Self.Resignation" Multiplicity="1" />
+    <End Role="ResignationDetail" Type="Self.ResignationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Resignation">
+        <PropertyRef Name="ResignationId" />
+      </Principal>
+      <Dependent Role="ResignationDetail">
+        <PropertyRef Name="ResignationId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -649,6 +797,18 @@
       </Principal>
       <Dependent Role="RoleMenu">
         <PropertyRef Name="UpdatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalaryManagement_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="SalaryManagement" Type="Self.SalaryManagement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="SalaryManagement">
+        <PropertyRef Name="StaffId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -825,10 +985,14 @@
     <EntitySet Name="LeaveRequest" EntityType="Self.LeaveRequest" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoginLog" EntityType="Self.LoginLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PageGroup" EntityType="Self.PageGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Resignation" EntityType="Self.Resignation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResignationDetail" EntityType="Self.ResignationDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoleMenu" EntityType="Self.RoleMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryManagement" EntityType="Self.SalaryManagement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StaffLogin" EntityType="Self.StaffLogin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StaffLoginRole" EntityType="Self.StaffLoginRole" Schema="dbo" store:Type="Tables" />
@@ -914,6 +1078,18 @@
       <End Role="StaffLogin" EntitySet="StaffLogin" />
       <End Role="Menu" EntitySet="Menu" />
     </AssociationSet>
+    <AssociationSet Name="FK_Notic_Staff" Association="Self.FK_Notic_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Notice" EntitySet="Notice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notic_StaffLogin" Association="Self.FK_Notic_StaffLogin">
+      <End Role="StaffLogin" EntitySet="StaffLogin" />
+      <End Role="Notice" EntitySet="Notice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notic_StaffLogin1" Association="Self.FK_Notic_StaffLogin1">
+      <End Role="StaffLogin" EntitySet="StaffLogin" />
+      <End Role="Notice" EntitySet="Notice" />
+    </AssociationSet>
     <AssociationSet Name="FK_Page_PageGroup" Association="Self.FK_Page_PageGroup">
       <End Role="PageGroup" EntitySet="PageGroup" />
       <End Role="Page" EntitySet="Page" />
@@ -925,6 +1101,22 @@
     <AssociationSet Name="FK_PageGroup_StaffLogin" Association="Self.FK_PageGroup_StaffLogin">
       <End Role="StaffLogin" EntitySet="StaffLogin" />
       <End Role="PageGroup" EntitySet="PageGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resignation_Staff" Association="Self.FK_Resignation_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Resignation" EntitySet="Resignation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resignation_StaffLogin" Association="Self.FK_Resignation_StaffLogin">
+      <End Role="StaffLogin" EntitySet="StaffLogin" />
+      <End Role="Resignation" EntitySet="Resignation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resignation_StaffLogin1" Association="Self.FK_Resignation_StaffLogin1">
+      <End Role="StaffLogin" EntitySet="StaffLogin" />
+      <End Role="Resignation" EntitySet="Resignation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResignationDetail_Resignation" Association="Self.FK_ResignationDetail_Resignation">
+      <End Role="Resignation" EntitySet="Resignation" />
+      <End Role="ResignationDetail" EntitySet="ResignationDetail" />
     </AssociationSet>
     <AssociationSet Name="FK_Role_StaffLogin" Association="Self.FK_Role_StaffLogin">
       <End Role="StaffLogin" EntitySet="StaffLogin" />
@@ -941,6 +1133,10 @@
     <AssociationSet Name="FK_RoleMenu_StaffLogin" Association="Self.FK_RoleMenu_StaffLogin">
       <End Role="StaffLogin" EntitySet="StaffLogin" />
       <End Role="RoleMenu" EntitySet="RoleMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalaryManagement_Staff" Association="Self.FK_SalaryManagement_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="SalaryManagement" EntitySet="SalaryManagement" />
     </AssociationSet>
     <AssociationSet Name="FK_Staff_Department" Association="Self.FK_Staff_Department">
       <End Role="Department" EntitySet="Department" />

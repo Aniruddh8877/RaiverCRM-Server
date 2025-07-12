@@ -260,10 +260,14 @@
     <Compile Include="Controllers\api\LeaveDetailController.cs" />
     <Compile Include="Controllers\api\LeaveRequestController.cs" />
     <Compile Include="Controllers\api\MenuController.cs" />
+    <Compile Include="Controllers\api\NoticeController.cs" />
     <Compile Include="Controllers\api\PageController.cs" />
     <Compile Include="Controllers\api\PageGroupController.cs" />
+    <Compile Include="Controllers\api\ResignationRequestController.cs" />
+    <Compile Include="Controllers\api\ResignatoinDetailController.cs" />
     <Compile Include="Controllers\api\RoleController.cs" />
     <Compile Include="Controllers\api\RoleMenuController.cs" />
+    <Compile Include="Controllers\api\SalaryManagementController.cs" />
     <Compile Include="Controllers\api\StaffController.cs" />
     <Compile Include="Controllers\api\StaffLoginController.cs" />
     <Compile Include="Controllers\api\StaffLoginRoleController.cs" />
@@ -330,6 +334,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ResignationRequest\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

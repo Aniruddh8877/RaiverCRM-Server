@@ -22,6 +22,9 @@ namespace Project
             this.Databases1 = new HashSet<Database>();
             this.LeadAssigns = new HashSet<LeadAssign>();
             this.LeaveRequests = new HashSet<LeaveRequest>();
+            this.Notices = new HashSet<Notice>();
+            this.Resignations = new HashSet<Resignation>();
+            this.SalaryManagements = new HashSet<SalaryManagement>();
             this.StaffLogins = new HashSet<StaffLogin>();
         }
     
@@ -46,6 +49,7 @@ namespace Project
         public Nullable<int> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public System.DateTime DOB { get; set; }
+        public string BasicSalary { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Backup> Backups { get; set; }
@@ -59,6 +63,12 @@ namespace Project
         public virtual ICollection<LeadAssign> LeadAssigns { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LeaveRequest> LeaveRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Notice> Notices { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Resignation> Resignations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalaryManagement> SalaryManagements { get; set; }
         public virtual StaffLogin StaffLogin { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StaffLogin> StaffLogins { get; set; }

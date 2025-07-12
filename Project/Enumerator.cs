@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace Project
 {
+    public enum ResignationStatus
+    {
+        Pending = 1,
+        Confirm = 2,
+        NoticPeriod = 3,
+        Canceled = 4,
+    }
 
     public enum Leavestatus
     {

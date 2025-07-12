@@ -41,10 +41,14 @@ namespace Project
         public virtual DbSet<LeaveRequest> LeaveRequests { get; set; }
         public virtual DbSet<LoginLog> LoginLogs { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
+        public virtual DbSet<Notice> Notices { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<PageGroup> PageGroups { get; set; }
+        public virtual DbSet<Resignation> Resignations { get; set; }
+        public virtual DbSet<ResignationDetail> ResignationDetails { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<RoleMenu> RoleMenus { get; set; }
+        public virtual DbSet<SalaryManagement> SalaryManagements { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<StaffLogin> StaffLogins { get; set; }
         public virtual DbSet<StaffLoginRole> StaffLoginRoles { get; set; }

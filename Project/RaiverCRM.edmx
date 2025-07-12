@@ -212,6 +212,22 @@
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="UpdatedDate" Type="date" />
         </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="NoticeId" />
+          </Key>
+          <Property Name="NoticeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaffId" Type="int" Nullable="false" />
+          <Property Name="Noticedate" Type="datetime" Nullable="false" />
+          <Property Name="NoticeDetail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Attachments" Type="nvarchar(max)" />
+          <Property Name="FileFormate" Type="nvarchar(max)" />
+          <Property Name="NoticeStatus" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdaedOn" Type="datetime" />
+        </EntityType>
         <EntityType Name="Page">
           <Key>
             <PropertyRef Name="PageId" />
@@ -233,6 +249,36 @@
           <Property Name="Status" Type="tinyint" Nullable="false" />
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="UpdatedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Resignation">
+          <Key>
+            <PropertyRef Name="ResignationId" />
+          </Key>
+          <Property Name="ResignationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JoinDate" Type="datetime" Nullable="false" />
+          <Property Name="DepatureDate" Type="datetime" Nullable="false" />
+          <Property Name="Statement" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BreafReason" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Resignationstatus" Type="tinyint" Nullable="false" />
+          <Property Name="Instruction" Type="nvarchar" MaxLength="250" />
+          <Property Name="StaffId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdaedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ResignationDetail">
+          <Key>
+            <PropertyRef Name="ResignationDetailId" />
+          </Key>
+          <Property Name="ResignationDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResignationId" Type="int" Nullable="false" />
+          <Property Name="JoinDate" Type="datetime" Nullable="false" />
+          <Property Name="DepatureDate" Type="datetime" Nullable="false" />
+          <Property Name="ResignationStatus" Type="tinyint" Nullable="false" />
+          <Property Name="BreafReason" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StatusUpdateDate" Type="datetime" />
+          <Property Name="Instruction" Type="nvarchar" MaxLength="350" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -256,6 +302,23 @@
           <Property Name="CanEdit" Type="bit" Nullable="false" />
           <Property Name="CanDelete" Type="bit" Nullable="false" />
           <Property Name="CanCreate" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalaryManagement">
+          <Key>
+            <PropertyRef Name="SalaryId" />
+          </Key>
+          <Property Name="StaffId" Type="int" Nullable="false" />
+          <Property Name="SalaryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Months" Type="tinyint" Nullable="false" />
+          <Property Name="TotalWorkingDay" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AbsentDay" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WorkingDay" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaymentMode" Type="tinyint" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TransactionNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+          <Property Name="BasicSalary" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -282,6 +345,7 @@
           <Property Name="CreatedBy" Type="int" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="BasicSalary" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="StaffLogin">
           <Key>
@@ -569,6 +633,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Notic_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="StaffId" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notic_StaffLogin">
+          <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="1" />
+          <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffLogin">
+              <PropertyRef Name="StaffLoginId" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notic_StaffLogin1">
+          <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="0..1" />
+          <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffLogin">
+              <PropertyRef Name="StaffLoginId" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Page_PageGroup">
           <End Role="PageGroup" Type="Self.PageGroup" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -604,6 +704,54 @@
             </Principal>
             <Dependent Role="PageGroup">
               <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resignation_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Resignation" Type="Self.Resignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="StaffId" />
+            </Principal>
+            <Dependent Role="Resignation">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resignation_StaffLogin">
+          <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="0..1" />
+          <End Role="Resignation" Type="Self.Resignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffLogin">
+              <PropertyRef Name="StaffLoginId" />
+            </Principal>
+            <Dependent Role="Resignation">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resignation_StaffLogin1">
+          <End Role="StaffLogin" Type="Self.StaffLogin" Multiplicity="1" />
+          <End Role="Resignation" Type="Self.Resignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffLogin">
+              <PropertyRef Name="StaffLoginId" />
+            </Principal>
+            <Dependent Role="Resignation">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResignationDetail_Resignation">
+          <End Role="Resignation" Type="Self.Resignation" Multiplicity="1" />
+          <End Role="ResignationDetail" Type="Self.ResignationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resignation">
+              <PropertyRef Name="ResignationId" />
+            </Principal>
+            <Dependent Role="ResignationDetail">
+              <PropertyRef Name="ResignationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -654,6 +802,18 @@
             </Principal>
             <Dependent Role="RoleMenu">
               <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalaryManagement_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="SalaryManagement" Type="Self.SalaryManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="StaffId" />
+            </Principal>
+            <Dependent Role="SalaryManagement">
+              <PropertyRef Name="StaffId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -830,10 +990,14 @@
           <EntitySet Name="LeaveRequest" EntityType="Self.LeaveRequest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginLog" EntityType="Self.LoginLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PageGroup" EntityType="Self.PageGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resignation" EntityType="Self.Resignation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResignationDetail" EntityType="Self.ResignationDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMenu" EntityType="Self.RoleMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryManagement" EntityType="Self.SalaryManagement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffLogin" EntityType="Self.StaffLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffLoginRole" EntityType="Self.StaffLoginRole" Schema="dbo" store:Type="Tables" />
@@ -919,6 +1083,18 @@
             <End Role="StaffLogin" EntitySet="StaffLogin" />
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
+          <AssociationSet Name="FK_Notic_Staff" Association="Self.FK_Notic_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Notice" EntitySet="Notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notic_StaffLogin" Association="Self.FK_Notic_StaffLogin">
+            <End Role="StaffLogin" EntitySet="StaffLogin" />
+            <End Role="Notice" EntitySet="Notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notic_StaffLogin1" Association="Self.FK_Notic_StaffLogin1">
+            <End Role="StaffLogin" EntitySet="StaffLogin" />
+            <End Role="Notice" EntitySet="Notice" />
+          </AssociationSet>
           <AssociationSet Name="FK_Page_PageGroup" Association="Self.FK_Page_PageGroup">
             <End Role="PageGroup" EntitySet="PageGroup" />
             <End Role="Page" EntitySet="Page" />
@@ -930,6 +1106,22 @@
           <AssociationSet Name="FK_PageGroup_StaffLogin" Association="Self.FK_PageGroup_StaffLogin">
             <End Role="StaffLogin" EntitySet="StaffLogin" />
             <End Role="PageGroup" EntitySet="PageGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resignation_Staff" Association="Self.FK_Resignation_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Resignation" EntitySet="Resignation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resignation_StaffLogin" Association="Self.FK_Resignation_StaffLogin">
+            <End Role="StaffLogin" EntitySet="StaffLogin" />
+            <End Role="Resignation" EntitySet="Resignation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resignation_StaffLogin1" Association="Self.FK_Resignation_StaffLogin1">
+            <End Role="StaffLogin" EntitySet="StaffLogin" />
+            <End Role="Resignation" EntitySet="Resignation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResignationDetail_Resignation" Association="Self.FK_ResignationDetail_Resignation">
+            <End Role="Resignation" EntitySet="Resignation" />
+            <End Role="ResignationDetail" EntitySet="ResignationDetail" />
           </AssociationSet>
           <AssociationSet Name="FK_Role_StaffLogin" Association="Self.FK_Role_StaffLogin">
             <End Role="StaffLogin" EntitySet="StaffLogin" />
@@ -946,6 +1138,10 @@
           <AssociationSet Name="FK_RoleMenu_StaffLogin" Association="Self.FK_RoleMenu_StaffLogin">
             <End Role="StaffLogin" EntitySet="StaffLogin" />
             <End Role="RoleMenu" EntitySet="RoleMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalaryManagement_Staff" Association="Self.FK_SalaryManagement_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="SalaryManagement" EntitySet="SalaryManagement" />
           </AssociationSet>
           <AssociationSet Name="FK_Staff_Department" Association="Self.FK_Staff_Department">
             <End Role="Department" EntitySet="Department" />
@@ -1021,10 +1217,14 @@
           <EntitySet Name="LeaveRequests" EntityType="RaiverCRMModel.LeaveRequest" />
           <EntitySet Name="LoginLogs" EntityType="RaiverCRMModel.LoginLog" />
           <EntitySet Name="Menus" EntityType="RaiverCRMModel.Menu" />
+          <EntitySet Name="Notices" EntityType="RaiverCRMModel.Notice" />
           <EntitySet Name="Pages" EntityType="RaiverCRMModel.Page" />
           <EntitySet Name="PageGroups" EntityType="RaiverCRMModel.PageGroup" />
+          <EntitySet Name="Resignations" EntityType="RaiverCRMModel.Resignation" />
+          <EntitySet Name="ResignationDetails" EntityType="RaiverCRMModel.ResignationDetail" />
           <EntitySet Name="Roles" EntityType="RaiverCRMModel.Role" />
           <EntitySet Name="RoleMenus" EntityType="RaiverCRMModel.RoleMenu" />
+          <EntitySet Name="SalaryManagements" EntityType="RaiverCRMModel.SalaryManagement" />
           <EntitySet Name="Staffs" EntityType="RaiverCRMModel.Staff" />
           <EntitySet Name="StaffLogins" EntityType="RaiverCRMModel.StaffLogin" />
           <EntitySet Name="StaffLoginRoles" EntityType="RaiverCRMModel.StaffLoginRole" />
@@ -1134,6 +1334,18 @@
             <End Role="Menu" EntitySet="Menus" />
             <End Role="RoleMenu" EntitySet="RoleMenus" />
           </AssociationSet>
+          <AssociationSet Name="FK_Notic_Staff" Association="RaiverCRMModel.FK_Notic_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Notice" EntitySet="Notices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notic_StaffLogin" Association="RaiverCRMModel.FK_Notic_StaffLogin">
+            <End Role="StaffLogin" EntitySet="StaffLogins" />
+            <End Role="Notice" EntitySet="Notices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notic_StaffLogin1" Association="RaiverCRMModel.FK_Notic_StaffLogin1">
+            <End Role="StaffLogin" EntitySet="StaffLogins" />
+            <End Role="Notice" EntitySet="Notices" />
+          </AssociationSet>
           <AssociationSet Name="FK_Page_PageGroup" Association="RaiverCRMModel.FK_Page_PageGroup">
             <End Role="PageGroup" EntitySet="PageGroups" />
             <End Role="Page" EntitySet="Pages" />
@@ -1145,6 +1357,22 @@
           <AssociationSet Name="FK_PageGroup_StaffLogin" Association="RaiverCRMModel.FK_PageGroup_StaffLogin">
             <End Role="StaffLogin" EntitySet="StaffLogins" />
             <End Role="PageGroup" EntitySet="PageGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resignation_Staff" Association="RaiverCRMModel.FK_Resignation_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Resignation" EntitySet="Resignations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resignation_StaffLogin" Association="RaiverCRMModel.FK_Resignation_StaffLogin">
+            <End Role="StaffLogin" EntitySet="StaffLogins" />
+            <End Role="Resignation" EntitySet="Resignations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resignation_StaffLogin1" Association="RaiverCRMModel.FK_Resignation_StaffLogin1">
+            <End Role="StaffLogin" EntitySet="StaffLogins" />
+            <End Role="Resignation" EntitySet="Resignations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResignationDetail_Resignation" Association="RaiverCRMModel.FK_ResignationDetail_Resignation">
+            <End Role="Resignation" EntitySet="Resignations" />
+            <End Role="ResignationDetail" EntitySet="ResignationDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_Role_StaffLogin" Association="RaiverCRMModel.FK_Role_StaffLogin">
             <End Role="StaffLogin" EntitySet="StaffLogins" />
@@ -1161,6 +1389,10 @@
           <AssociationSet Name="FK_RoleMenu_StaffLogin" Association="RaiverCRMModel.FK_RoleMenu_StaffLogin">
             <End Role="StaffLogin" EntitySet="StaffLogins" />
             <End Role="RoleMenu" EntitySet="RoleMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalaryManagement_Staff" Association="RaiverCRMModel.FK_SalaryManagement_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="SalaryManagement" EntitySet="SalaryManagements" />
           </AssociationSet>
           <AssociationSet Name="FK_Staff_StaffLogin" Association="RaiverCRMModel.FK_Staff_StaffLogin">
             <End Role="StaffLogin" EntitySet="StaffLogins" />
@@ -1428,6 +1660,25 @@
           <NavigationProperty Name="StaffLogin" Relationship="RaiverCRMModel.FK_Menu_StaffLogin" FromRole="Menu" ToRole="StaffLogin" />
           <NavigationProperty Name="RoleMenus" Relationship="RaiverCRMModel.FK_RoleMenu_Menu" FromRole="Menu" ToRole="RoleMenu" />
         </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="NoticeId" />
+          </Key>
+          <Property Name="NoticeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="Noticedate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NoticeDetail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Attachments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileFormate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoticeStatus" Type="Byte" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdaedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Staff" Relationship="RaiverCRMModel.FK_Notic_Staff" FromRole="Notice" ToRole="Staff" />
+          <NavigationProperty Name="StaffLogin" Relationship="RaiverCRMModel.FK_Notic_StaffLogin" FromRole="Notice" ToRole="StaffLogin" />
+          <NavigationProperty Name="StaffLogin1" Relationship="RaiverCRMModel.FK_Notic_StaffLogin1" FromRole="Notice" ToRole="StaffLogin" />
+        </EntityType>
         <EntityType Name="Page">
           <Key>
             <PropertyRef Name="PageId" />
@@ -1454,6 +1705,41 @@
           <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Pages" Relationship="RaiverCRMModel.FK_Page_PageGroup" FromRole="PageGroup" ToRole="Page" />
           <NavigationProperty Name="StaffLogin" Relationship="RaiverCRMModel.FK_PageGroup_StaffLogin" FromRole="PageGroup" ToRole="StaffLogin" />
+        </EntityType>
+        <EntityType Name="Resignation">
+          <Key>
+            <PropertyRef Name="ResignationId" />
+          </Key>
+          <Property Name="ResignationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JoinDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DepatureDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Statement" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BreafReason" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Resignationstatus" Type="Byte" Nullable="false" />
+          <Property Name="Instruction" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdaedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Staff" Relationship="RaiverCRMModel.FK_Resignation_Staff" FromRole="Resignation" ToRole="Staff" />
+          <NavigationProperty Name="StaffLogin" Relationship="RaiverCRMModel.FK_Resignation_StaffLogin" FromRole="Resignation" ToRole="StaffLogin" />
+          <NavigationProperty Name="StaffLogin1" Relationship="RaiverCRMModel.FK_Resignation_StaffLogin1" FromRole="Resignation" ToRole="StaffLogin" />
+          <NavigationProperty Name="ResignationDetails" Relationship="RaiverCRMModel.FK_ResignationDetail_Resignation" FromRole="Resignation" ToRole="ResignationDetail" />
+        </EntityType>
+        <EntityType Name="ResignationDetail">
+          <Key>
+            <PropertyRef Name="ResignationDetailId" />
+          </Key>
+          <Property Name="ResignationDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResignationId" Type="Int32" Nullable="false" />
+          <Property Name="JoinDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DepatureDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ResignationStatus" Type="Byte" Nullable="false" />
+          <Property Name="BreafReason" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="Instruction" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Resignation" Relationship="RaiverCRMModel.FK_ResignationDetail_Resignation" FromRole="ResignationDetail" ToRole="Resignation" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -1484,6 +1770,24 @@
           <NavigationProperty Name="Role" Relationship="RaiverCRMModel.FK_RoleMenu_Role" FromRole="RoleMenu" ToRole="Role" />
           <NavigationProperty Name="StaffLogin" Relationship="RaiverCRMModel.FK_RoleMenu_StaffLogin" FromRole="RoleMenu" ToRole="StaffLogin" />
         </EntityType>
+        <EntityType Name="SalaryManagement">
+          <Key>
+            <PropertyRef Name="SalaryId" />
+          </Key>
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="SalaryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Months" Type="Byte" Nullable="false" />
+          <Property Name="TotalWorkingDay" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AbsentDay" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WorkingDay" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMode" Type="Byte" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amount" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BasicSalary" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staff" Relationship="RaiverCRMModel.FK_SalaryManagement_Staff" FromRole="SalaryManagement" ToRole="Staff" />
+        </EntityType>
         <EntityType Name="Staff">
           <Key>
             <PropertyRef Name="StaffId" />
@@ -1509,6 +1813,7 @@
           <Property Name="CreatedBy" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BasicSalary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Backups" Relationship="RaiverCRMModel.FK_Backup_Staff" FromRole="Staff" ToRole="Backup" />
           <NavigationProperty Name="Databases" Relationship="RaiverCRMModel.FK_Database_Staff" FromRole="Staff" ToRole="Database" />
           <NavigationProperty Name="Databases1" Relationship="RaiverCRMModel.FK_Database_Staff1" FromRole="Staff" ToRole="Database" />
@@ -1516,6 +1821,9 @@
           <NavigationProperty Name="Designation" Relationship="RaiverCRMModel.FK_Staff_Designation" FromRole="Staff" ToRole="Designation" />
           <NavigationProperty Name="LeadAssigns" Relationship="RaiverCRMModel.FK_LeadAssign_Staff" FromRole="Staff" ToRole="LeadAssign" />
           <NavigationProperty Name="LeaveRequests" Relationship="RaiverCRMModel.staff_relation" FromRole="Staff" ToRole="LeaveRequest" />
+          <NavigationProperty Name="Notices" Relationship="RaiverCRMModel.FK_Notic_Staff" FromRole="Staff" ToRole="Notice" />
+          <NavigationProperty Name="Resignations" Relationship="RaiverCRMModel.FK_Resignation_Staff" FromRole="Staff" ToRole="Resignation" />
+          <NavigationProperty Name="SalaryManagements" Relationship="RaiverCRMModel.FK_SalaryManagement_Staff" FromRole="Staff" ToRole="SalaryManagement" />
           <NavigationProperty Name="StaffLogin" Relationship="RaiverCRMModel.FK_Staff_StaffLogin" FromRole="Staff" ToRole="StaffLogin" />
           <NavigationProperty Name="StaffLogins" Relationship="RaiverCRMModel.FK_StaffLogin_Staff" FromRole="Staff" ToRole="StaffLogin" />
         </EntityType>
@@ -1543,8 +1851,12 @@
           <NavigationProperty Name="LeaveRequests" Relationship="RaiverCRMModel.createdby_relation" FromRole="StaffLogin" ToRole="LeaveRequest" />
           <NavigationProperty Name="LeaveRequests1" Relationship="RaiverCRMModel.Updatedby_relation" FromRole="StaffLogin" ToRole="LeaveRequest" />
           <NavigationProperty Name="Menus" Relationship="RaiverCRMModel.FK_Menu_StaffLogin" FromRole="StaffLogin" ToRole="Menu" />
+          <NavigationProperty Name="Notices" Relationship="RaiverCRMModel.FK_Notic_StaffLogin" FromRole="StaffLogin" ToRole="Notice" />
+          <NavigationProperty Name="Notices1" Relationship="RaiverCRMModel.FK_Notic_StaffLogin1" FromRole="StaffLogin" ToRole="Notice" />
           <NavigationProperty Name="Pages" Relationship="RaiverCRMModel.FK_Page_StaffLogin" FromRole="StaffLogin" ToRole="Page" />
           <NavigationProperty Name="PageGroups" Relationship="RaiverCRMModel.FK_PageGroup_StaffLogin" FromRole="StaffLogin" ToRole="PageGroup" />
+          <NavigationProperty Name="Resignations" Relationship="RaiverCRMModel.FK_Resignation_StaffLogin" FromRole="StaffLogin" ToRole="Resignation" />
+          <NavigationProperty Name="Resignations1" Relationship="RaiverCRMModel.FK_Resignation_StaffLogin1" FromRole="StaffLogin" ToRole="Resignation" />
           <NavigationProperty Name="Roles" Relationship="RaiverCRMModel.FK_Role_StaffLogin" FromRole="StaffLogin" ToRole="Role" />
           <NavigationProperty Name="RoleMenus" Relationship="RaiverCRMModel.FK_RoleMenu_StaffLogin" FromRole="StaffLogin" ToRole="RoleMenu" />
           <NavigationProperty Name="Staffs" Relationship="RaiverCRMModel.FK_Staff_StaffLogin" FromRole="StaffLogin" ToRole="Staff" />
@@ -1909,6 +2221,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Notic_Staff">
+          <End Type="RaiverCRMModel.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="RaiverCRMModel.Notice" Role="Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="StaffId" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notic_StaffLogin">
+          <End Type="RaiverCRMModel.StaffLogin" Role="StaffLogin" Multiplicity="1" />
+          <End Type="RaiverCRMModel.Notice" Role="Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffLogin">
+              <PropertyRef Name="StaffLoginId" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notic_StaffLogin1">
+          <End Type="RaiverCRMModel.StaffLogin" Role="StaffLogin" Multiplicity="0..1" />
+          <End Type="RaiverCRMModel.Notice" Role="Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffLogin">
+              <PropertyRef Name="StaffLoginId" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Page_PageGroup">
           <End Type="RaiverCRMModel.PageGroup" Role="PageGroup" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1944,6 +2292,54 @@
             </Principal>
             <Dependent Role="PageGroup">
               <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resignation_Staff">
+          <End Type="RaiverCRMModel.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="RaiverCRMModel.Resignation" Role="Resignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="StaffId" />
+            </Principal>
+            <Dependent Role="Resignation">
+              <PropertyRef Name="StaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resignation_StaffLogin">
+          <End Type="RaiverCRMModel.StaffLogin" Role="StaffLogin" Multiplicity="0..1" />
+          <End Type="RaiverCRMModel.Resignation" Role="Resignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffLogin">
+              <PropertyRef Name="StaffLoginId" />
+            </Principal>
+            <Dependent Role="Resignation">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resignation_StaffLogin1">
+          <End Type="RaiverCRMModel.StaffLogin" Role="StaffLogin" Multiplicity="1" />
+          <End Type="RaiverCRMModel.Resignation" Role="Resignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffLogin">
+              <PropertyRef Name="StaffLoginId" />
+            </Principal>
+            <Dependent Role="Resignation">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResignationDetail_Resignation">
+          <End Type="RaiverCRMModel.Resignation" Role="Resignation" Multiplicity="1" />
+          <End Type="RaiverCRMModel.ResignationDetail" Role="ResignationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resignation">
+              <PropertyRef Name="ResignationId" />
+            </Principal>
+            <Dependent Role="ResignationDetail">
+              <PropertyRef Name="ResignationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1992,6 +2388,18 @@
             </Principal>
             <Dependent Role="RoleMenu">
               <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalaryManagement_Staff">
+          <End Type="RaiverCRMModel.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="RaiverCRMModel.SalaryManagement" Role="SalaryManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="StaffId" />
+            </Principal>
+            <Dependent Role="SalaryManagement">
+              <PropertyRef Name="StaffId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2308,6 +2716,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Notices">
+            <EntityTypeMapping TypeName="RaiverCRMModel.Notice">
+              <MappingFragment StoreEntitySet="Notice">
+                <ScalarProperty Name="UpdaedOn" ColumnName="UpdaedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="NoticeStatus" ColumnName="NoticeStatus" />
+                <ScalarProperty Name="FileFormate" ColumnName="FileFormate" />
+                <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+                <ScalarProperty Name="NoticeDetail" ColumnName="NoticeDetail" />
+                <ScalarProperty Name="Noticedate" ColumnName="Noticedate" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="NoticeId" ColumnName="NoticeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Pages">
             <EntityTypeMapping TypeName="RaiverCRMModel.Page">
               <MappingFragment StoreEntitySet="Page">
@@ -2329,6 +2754,38 @@
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="PageGroupName" ColumnName="PageGroupName" />
                 <ScalarProperty Name="PageGroupId" ColumnName="PageGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resignations">
+            <EntityTypeMapping TypeName="RaiverCRMModel.Resignation">
+              <MappingFragment StoreEntitySet="Resignation">
+                <ScalarProperty Name="UpdaedOn" ColumnName="UpdaedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+                <ScalarProperty Name="Resignationstatus" ColumnName="Resignationstatus" />
+                <ScalarProperty Name="BreafReason" ColumnName="BreafReason" />
+                <ScalarProperty Name="Statement" ColumnName="Statement" />
+                <ScalarProperty Name="DepatureDate" ColumnName="DepatureDate" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="ResignationId" ColumnName="ResignationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResignationDetails">
+            <EntityTypeMapping TypeName="RaiverCRMModel.ResignationDetail">
+              <MappingFragment StoreEntitySet="ResignationDetail">
+                <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+                <ScalarProperty Name="StatusUpdateDate" ColumnName="StatusUpdateDate" />
+                <ScalarProperty Name="BreafReason" ColumnName="BreafReason" />
+                <ScalarProperty Name="ResignationStatus" ColumnName="ResignationStatus" />
+                <ScalarProperty Name="DepatureDate" ColumnName="DepatureDate" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="ResignationId" ColumnName="ResignationId" />
+                <ScalarProperty Name="ResignationDetailId" ColumnName="ResignationDetailId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2357,9 +2814,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SalaryManagements">
+            <EntityTypeMapping TypeName="RaiverCRMModel.SalaryManagement">
+              <MappingFragment StoreEntitySet="SalaryManagement">
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="TransactionNo" ColumnName="TransactionNo" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="WorkingDay" ColumnName="WorkingDay" />
+                <ScalarProperty Name="AbsentDay" ColumnName="AbsentDay" />
+                <ScalarProperty Name="TotalWorkingDay" ColumnName="TotalWorkingDay" />
+                <ScalarProperty Name="Months" ColumnName="Months" />
+                <ScalarProperty Name="SalaryId" ColumnName="SalaryId" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Staffs">
             <EntityTypeMapping TypeName="RaiverCRMModel.Staff">
               <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
                 <ScalarProperty Name="DOB" ColumnName="DOB" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
