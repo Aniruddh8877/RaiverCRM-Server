@@ -6,33 +6,33 @@
     <edmx:Diagrams>
       <Diagram DiagramId="66ae989feef542af911c9133785d2607" Name="Diagram1" ZoomLevel="63" >
         <EntityTypeShape EntityType="RaiverCRMModel.App" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="RaiverCRMModel.Backup" Width="1.5" PointX="5.25" PointY="27" />
-        <EntityTypeShape EntityType="RaiverCRMModel.City" Width="1.5" PointX="9.75" PointY="62.25" />
-        <EntityTypeShape EntityType="RaiverCRMModel.Company" Width="1.5" PointX="7.5" PointY="53" />
-        <EntityTypeShape EntityType="RaiverCRMModel.Database" Width="1.5" PointX="5.25" PointY="23.5" />
-        <EntityTypeShape EntityType="RaiverCRMModel.Department" Width="1.5" PointX="0.75" PointY="29.875" />
-        <EntityTypeShape EntityType="RaiverCRMModel.Designation" Width="1.5" PointX="0.75" PointY="32.875" />
-        <EntityTypeShape EntityType="RaiverCRMModel.District" Width="1.5" PointX="9.75" PointY="70.125" />
-        <EntityTypeShape EntityType="RaiverCRMModel.LeadAssign" Width="1.5" PointX="9.75" PointY="50.875" />
-        <EntityTypeShape EntityType="RaiverCRMModel.LeadCategory" Width="1.5" PointX="7.5" PointY="73.25" />
-        <EntityTypeShape EntityType="RaiverCRMModel.LeadDetail" Width="1.5" PointX="12" PointY="51.75" />
+        <EntityTypeShape EntityType="RaiverCRMModel.Backup" Width="1.5" PointX="5.25" PointY="23.625" />
+        <EntityTypeShape EntityType="RaiverCRMModel.City" Width="1.5" PointX="9.75" PointY="57.25" />
+        <EntityTypeShape EntityType="RaiverCRMModel.Company" Width="1.5" PointX="7.5" PointY="52.5" />
+        <EntityTypeShape EntityType="RaiverCRMModel.Database" Width="1.5" PointX="5.25" PointY="65.375" />
+        <EntityTypeShape EntityType="RaiverCRMModel.Department" Width="1.5" PointX="0.75" PointY="30" />
+        <EntityTypeShape EntityType="RaiverCRMModel.Designation" Width="1.5" PointX="0.75" PointY="33" />
+        <EntityTypeShape EntityType="RaiverCRMModel.District" Width="1.5" PointX="9.75" PointY="68.5" />
+        <EntityTypeShape EntityType="RaiverCRMModel.LeadAssign" Width="1.5" PointX="12.75" PointY="43.25" />
+        <EntityTypeShape EntityType="RaiverCRMModel.LeadCategory" Width="1.5" PointX="7.5" PointY="57.75" />
+        <EntityTypeShape EntityType="RaiverCRMModel.LeadDetail" Width="1.5" PointX="15" PointY="44" />
         <EntityTypeShape EntityType="RaiverCRMModel.LeadFollowUp" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="RaiverCRMModel.LeaveDetail" Width="1.5" PointX="14.75" PointY="49.5" />
-        <EntityTypeShape EntityType="RaiverCRMModel.LeaveRequest" Width="1.5" PointX="7.5" PointY="39.375" />
+        <EntityTypeShape EntityType="RaiverCRMModel.LeaveDetail" Width="1.5" PointX="14.75" PointY="49.125" />
+        <EntityTypeShape EntityType="RaiverCRMModel.LeaveRequest" Width="1.5" PointX="7.5" PointY="45.25" />
         <EntityTypeShape EntityType="RaiverCRMModel.LoginLog" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="RaiverCRMModel.Menu" Width="1.5" PointX="7.5" PointY="58.875" />
-        <EntityTypeShape EntityType="RaiverCRMModel.Notice" Width="1.5" PointX="7.5" PointY="44.625" />
-        <EntityTypeShape EntityType="RaiverCRMModel.Page" Width="1.5" PointX="9.75" PointY="66.5" />
-        <EntityTypeShape EntityType="RaiverCRMModel.PageGroup" Width="1.5" PointX="7.5" PointY="76.875" />
-        <EntityTypeShape EntityType="RaiverCRMModel.Resignation" Width="1.5" PointX="10.5" PointY="44.375" />
-        <EntityTypeShape EntityType="RaiverCRMModel.ResignationDetail" Width="1.5" PointX="12.75" PointY="45" />
-        <EntityTypeShape EntityType="RaiverCRMModel.Role" Width="1.5" PointX="7.5" PointY="49.75" />
-        <EntityTypeShape EntityType="RaiverCRMModel.RoleMenu" Width="1.5" PointX="12.75" PointY="55.75" />
-        <EntityTypeShape EntityType="RaiverCRMModel.SalaryManagement" Width="1.5" PointX="5.25" PointY="19.25" />
-        <EntityTypeShape EntityType="RaiverCRMModel.Staff" Width="1.5" PointX="3" PointY="30" />
-        <EntityTypeShape EntityType="RaiverCRMModel.StaffLogin" Width="1.5" PointX="5.25" PointY="54.625" />
-        <EntityTypeShape EntityType="RaiverCRMModel.StaffLoginRole" Width="1.5" PointX="9.75" PointY="57" />
-        <EntityTypeShape EntityType="RaiverCRMModel.State" Width="1.5" PointX="7.5" PointY="69.75" />
+        <EntityTypeShape EntityType="RaiverCRMModel.Menu" Width="1.5" PointX="12" PointY="48.5" />
+        <EntityTypeShape EntityType="RaiverCRMModel.Notice" Width="1.5" PointX="7.5" PointY="36.375" />
+        <EntityTypeShape EntityType="RaiverCRMModel.Page" Width="1.5" PointX="9.75" PointY="46.375" />
+        <EntityTypeShape EntityType="RaiverCRMModel.PageGroup" Width="1.5" PointX="7.5" PointY="41.25" />
+        <EntityTypeShape EntityType="RaiverCRMModel.Resignation" Width="1.5" PointX="10.5" PointY="40.25" />
+        <EntityTypeShape EntityType="RaiverCRMModel.ResignationDetail" Width="1.5" PointX="12.75" PointY="38.875" />
+        <EntityTypeShape EntityType="RaiverCRMModel.Role" Width="1.5" PointX="7.5" PointY="64.75" />
+        <EntityTypeShape EntityType="RaiverCRMModel.RoleMenu" Width="1.5" PointX="14.25" PointY="55.25" />
+        <EntityTypeShape EntityType="RaiverCRMModel.SalaryManagement" Width="1.5" PointX="5.25" PointY="19.375" />
+        <EntityTypeShape EntityType="RaiverCRMModel.Staff" Width="1.5" PointX="3" PointY="30.125" />
+        <EntityTypeShape EntityType="RaiverCRMModel.StaffLogin" Width="1.5" PointX="5.25" PointY="46.25" />
+        <EntityTypeShape EntityType="RaiverCRMModel.StaffLoginRole" Width="1.5" PointX="9.75" PointY="53.5" />
+        <EntityTypeShape EntityType="RaiverCRMModel.State" Width="1.5" PointX="7.5" PointY="68.125" />
         <EntityTypeShape EntityType="RaiverCRMModel.StateMaster" Width="1.5" PointX="2.75" PointY="3.75" />
         <AssociationConnector Association="RaiverCRMModel.FK_Backup_Staff" />
         <AssociationConnector Association="RaiverCRMModel.FK_City_StaffLogin" />

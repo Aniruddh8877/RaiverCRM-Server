@@ -18,7 +18,7 @@ C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\Project\bin\Debug\EntityFram
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\Project\bin\Debug\EntityFramework.xml
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\Project\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
-C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\Project\obj\Debug\Project.csproj.CopyComplete
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\Project\obj\Debug\Project.dll
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\Project\obj\Debug\Project.pdb
 C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\Project\obj\Debug\Project.csproj.AssemblyReference.cache
+C:\Users\ANIRUDDH SHARMA\Desktop\RaiverCRM\packages\Project\obj\Debug\Project.csproj.Up2Date

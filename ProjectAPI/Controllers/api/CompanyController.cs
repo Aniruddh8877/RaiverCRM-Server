@@ -10,7 +10,7 @@ using System.Web.Http;
 namespace ProjectAPI.Controllers.api
 {
     [RoutePrefix("api/Company")]
-    public class CompanyController : ApiController
+    public class CompanyController : ApiController 
     {
         [HttpPost]
         [Route("CompanyList")]

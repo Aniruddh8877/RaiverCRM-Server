@@ -212,11 +212,12 @@
       <PropertyRef Name="NoticeId" />
     </Key>
     <Property Name="NoticeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StaffId" Type="int" Nullable="false" />
-    <Property Name="Noticedate" Type="datetime" Nullable="false" />
+    <Property Name="StaffId" Type="int" />
+    <Property Name="NoticeTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="NoticeDetail" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Attachments" Type="nvarchar(max)" />
-    <Property Name="FileFormate" Type="nvarchar(max)" />
+    <Property Name="FileFormat" Type="nvarchar(max)" />
+    <Property Name="NoticeDate" Type="datetime" Nullable="false" />
     <Property Name="NoticeStatus" Type="tinyint" Nullable="false" />
     <Property Name="CreatedBy" Type="int" Nullable="false" />
     <Property Name="CreatedOn" Type="datetime" Nullable="false" />
@@ -629,7 +630,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Notic_Staff">
-    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
     <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Staff">

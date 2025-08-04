@@ -15,11 +15,12 @@ namespace Project
     public partial class Notice
     {
         public int NoticeId { get; set; }
-        public int StaffId { get; set; }
-        public System.DateTime Noticedate { get; set; }
+        public Nullable<int> StaffId { get; set; }
+        public string NoticeTitle { get; set; }
         public string NoticeDetail { get; set; }
         public string Attachments { get; set; }
-        public string FileFormate { get; set; }
+        public string FileFormat { get; set; }
+        public System.DateTime NoticeDate { get; set; }
         public byte NoticeStatus { get; set; }
         public int CreatedBy { get; set; }
         public System.DateTime CreatedOn { get; set; }

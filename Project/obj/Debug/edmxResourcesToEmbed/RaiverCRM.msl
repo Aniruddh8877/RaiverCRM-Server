@@ -232,10 +232,11 @@
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="NoticeStatus" ColumnName="NoticeStatus" />
-          <ScalarProperty Name="FileFormate" ColumnName="FileFormate" />
+          <ScalarProperty Name="NoticeDate" ColumnName="NoticeDate" />
+          <ScalarProperty Name="FileFormat" ColumnName="FileFormat" />
           <ScalarProperty Name="Attachments" ColumnName="Attachments" />
           <ScalarProperty Name="NoticeDetail" ColumnName="NoticeDetail" />
-          <ScalarProperty Name="Noticedate" ColumnName="Noticedate" />
+          <ScalarProperty Name="NoticeTitle" ColumnName="NoticeTitle" />
           <ScalarProperty Name="StaffId" ColumnName="StaffId" />
           <ScalarProperty Name="NoticeId" ColumnName="NoticeId" />
         </MappingFragment>

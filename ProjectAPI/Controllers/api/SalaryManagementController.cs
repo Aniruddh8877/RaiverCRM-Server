@@ -95,8 +95,7 @@ namespace ProjectAPI.Controllers.api
                                 salary.WorkingDay = model.WorkingDay;
                                 salary.Amount = model.Amount;
                                 salary.BasicSalary = model.BasicSalary;
-                                salary.PaymentDate = DateTime.Now;
-                                salary.PaymentMode = (int)PaymentMode.CASH;
+                                salary.PaymentMode = model.PaymentMode;
                                 salary.Remarks = model.Remarks;
                             }
                         }

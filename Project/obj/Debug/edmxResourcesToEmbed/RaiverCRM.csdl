@@ -465,11 +465,12 @@
       <PropertyRef Name="NoticeId" />
     </Key>
     <Property Name="NoticeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StaffId" Type="Int32" Nullable="false" />
-    <Property Name="Noticedate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StaffId" Type="Int32" />
+    <Property Name="NoticeTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NoticeDetail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Attachments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="FileFormate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FileFormat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NoticeDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="NoticeStatus" Type="Byte" Nullable="false" />
     <Property Name="CreatedBy" Type="Int32" Nullable="false" />
     <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
@@ -1022,7 +1023,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Notic_Staff">
-    <End Type="RaiverCRMModel.Staff" Role="Staff" Multiplicity="1" />
+    <End Type="RaiverCRMModel.Staff" Role="Staff" Multiplicity="0..1" />
     <End Type="RaiverCRMModel.Notice" Role="Notice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Staff">
